@@ -10,7 +10,7 @@ from gui.zannus_settings_button.zannus_settings_button import zannus_settings_bu
 import utils.global_variables as gv
 
 def gui_init():
-    gv.root.resizable(True, True)
+    gv.root.resizable(False, False)
     gv.root.protocol("WM_DELETE_WINDOW", partial(on_closing))
     fishing_column()
     repairing_column()

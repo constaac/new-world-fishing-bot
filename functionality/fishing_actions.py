@@ -1,3 +1,4 @@
+import utils.global_variables as gv
 from utils.config import dict, random_timeout
 from time import sleep
 from wrappers.win32api_wrapper import *
@@ -24,10 +25,11 @@ def pause():
 
 def cast():
     cast_timeout = random_timeout(dict['fishing']['timeouts']['cast'])
+    key_to_press = ("b", "0")[gv.zannus_settings_enabled]
     debug("Pause for: 6 s")
     sleep(6)
-    debug("release b")
-    release_key('b')
+    debug("release " + key_to_press)
+    release_key(key_to_press)
     debug("Pause for: 1 s")
     sleep(1)
     debug("Pause for: {} s".format(cast_timeout))
@@ -36,11 +38,12 @@ def cast():
     release_mouse_key()
     debug("Pause for: 5 s")
     sleep(5)
-    debug("press b")
-    press_key('b')
+    debug(key_to_press)
+    press_key(key_to_press)
 
 def repairing():
-    release_key('b')
+    key_to_press = ("b", "0")[gv.zannus_settings_enabled]
+    release_key(key_to_press)
     arm_disarm_timeout = random_timeout(dict['repairing']['timeouts']['arm_disarm'])
     debug("Disarm fishing rod. Total time: {} s".format(arm_disarm_timeout))
     arm_disarm_fishing_rod(arm_disarm_timeout)
@@ -76,28 +79,31 @@ def open_close_inventory(timeout):
     sleep(timeout)
 
 def repair(timeout):
+    key_to_press = ("4", "F4")[gv.zannus_settings_enabled]
     sleep(timeout)
-    press_key('r')
+    press_key(key_to_press)
     sleep(0.1)
     click_mouse_with_coordinates(dict['repairing']['x'].get(), dict['repairing']['y'].get())
     sleep(0.1)
-    release_key('r')
+    release_key(key_to_press)
     sleep(timeout)
 
 def confirm_repair(timeout):
+    key_to_press = ("e", "r")[gv.zannus_settings_enabled]
     sleep(timeout)
-    press_key('e')
+    press_key(key_to_press)
     sleep(0.1)
-    release_key('e')
+    release_key(key_to_press)
     sleep(timeout)
 
 def select_bait():
-    release_key('b')
+    release_key(("b", "0")[gv.zannus_settings_enabled])
 
+    key_to_press = ("r", "F4")[gv.zannus_settings_enabled]
     debug("Bait selection.")
-    press_key('r')
+    press_key(key_to_press)
     sleep(0.1)
-    release_key('r')
+    release_key(key_to_press)
 
     bait_select_timeout = random_timeout(dict['bait']['timeouts']['select'])
     debug("Bait select. Total time: {} s".format(bait_select_timeout))

@@ -1,5 +1,4 @@
 import utils.global_variables as gv
-import utils.global_variables as gv
 from tkinter import Button, LabelFrame
 from functools import partial
 from gui.gui_functions import start_fishing
