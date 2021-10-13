@@ -13,7 +13,13 @@ VK_CODE = {'tab':0x09,
            'b':0x42,
            'e':0x45,
            'r':0x52,
-           'F3':0x72}
+           'w':0x57,
+           'a':0x41,
+           's':0x53,
+           'd':0x44,
+           'Space':0x20,
+           'F3':0x72,
+           'F4':0x73}
 
 def press_key(key):
     win32api.keybd_event(VK_CODE[key], 0,0,0)

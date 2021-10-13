@@ -17,6 +17,7 @@ FISH_NOTICED = path.join(ROOT_DIR, 'resources\\fish_noticed.jpg')
 ICON_PATH = path.join(ROOT_DIR, 'resources\\icon.ico')
 
 continue_fishing = False
+zannus_settings_enabled = False
 last_repair_time = int(time())
 last_results = LastResults()
 root = Tk()

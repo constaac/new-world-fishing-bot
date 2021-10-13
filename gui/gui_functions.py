@@ -52,8 +52,23 @@ def changeFishingState(button):
     button.configure(text = "Start fishing")
     button.configure(command = partial(start_fishing, button))
 
+def changeZannusSettingsState(button):
+    gv.zannus_settings_enabled = not gv.zannus_settings_enabled
+    if(gv.zannus_settings_enabled):
+        button.configure(text = "Reset to Default Settings")
+        button.configure(command = partial(toggle_zannus_settings, button))
+        return
+    button.configure(text = "Zannus Settings")
+    button.configure(command = partial(toggle_zannus_settings, button))
+
 def start_fishing(button):
     changeFishingState(button)
     fishing_loop()
+
+def save():
+    save_data()
+
+def toggle_zannus_settings(button):
+    changeZannusSettingsState(button)
 
 
