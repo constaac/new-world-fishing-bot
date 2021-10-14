@@ -22,6 +22,12 @@ def fishing_loop():
                 if dict['bait']['enable'].get():
                     info("Selecting bait")
                     select_bait()
+    should_break_afk_in = -1 * (int(time()) - gv.last_afk_break_time - 1000)
+    debug("AFK break in: " + str(should_break_afk_in))
+    if(should_break_afk_in < 0):
+        gv.last_afk_break_time = int(time())
+        info("Breaking AFK")
+        breaking_afk()
     if (gv.continue_fishing):
         gv.root.after(int(random_timeout(dict['fishing']['timeouts']['loop'])*1000), fishing_loop)
 

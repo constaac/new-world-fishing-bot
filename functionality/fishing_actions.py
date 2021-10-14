@@ -66,6 +66,23 @@ def repairing():
     debug("Arm fishing rod. Total time: {} s".format(arm_disarm_timeout))
     arm_disarm_fishing_rod(arm_disarm_timeout)
 
+def breaking_afk():
+    key_to_press = ("b", "0")[gv.zannus_settings_enabled]
+    release_key(key_to_press)
+    timeout = random_timeout(dict['fishing']['timeouts']['afk'])
+    debug("Breaking AFK. Total time between movements: {} s".format(timeout))
+    sleep(timeout)
+    press_key('a')
+    release_key('a')
+    sleep(timeout)
+    press_key('d')
+    release_key('d')
+    sleep(timeout)
+    press_key('Space')
+    release_key('Space')
+    sleep(timeout)
+    
+
 def arm_disarm_fishing_rod(timeout):
     sleep(timeout)
     press_key('F3')

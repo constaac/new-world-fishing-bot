@@ -32,6 +32,10 @@ dict = {
         'cast': {
           'min': config['fishing']['timeouts']['cast']['min'],
           'max': config['fishing']['timeouts']['cast']['max']
+        },
+        "afk": {
+          'min': config['fishing']['timeouts']['afk']['min'],
+          'max': config['fishing']['timeouts']['afk']['max']
         }
       }
     },
