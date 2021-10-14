@@ -29,7 +29,7 @@ repairing:
   x: 1180
   y: 850
   length: 25
-  every: 30
+  every: 900
   enable: 1
   timeouts:
     arm_disarm:
