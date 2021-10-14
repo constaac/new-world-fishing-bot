@@ -1,4 +1,5 @@
 .idea/
+.vs/
 __pycache__/
 saved_data/screenshots/*
 !saved_data/screenshots/.gitkeep

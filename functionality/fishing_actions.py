@@ -1,8 +1,9 @@
 import utils.global_variables as gv
+import random
 from utils.config import dict, random_timeout
 from time import sleep
 from wrappers.win32api_wrapper import *
-from wrappers.logging_wrapper import debug
+from wrappers.logging_wrapper import info, debug
 
 def fish_notice():
     notice_timeout = random_timeout(dict['fishing']['timeouts']['notice'])
@@ -66,20 +67,47 @@ def repairing():
     debug("Arm fishing rod. Total time: {} s".format(arm_disarm_timeout))
     arm_disarm_fishing_rod(arm_disarm_timeout)
 
+
 def breaking_afk():
     key_to_press = ("b", "0")[gv.zannus_settings_enabled]
     release_key(key_to_press)
+    horizontal_stutter()
+    for _ in range(1, random.choice(range(3,7))):
+        if random.choice([1,2]) == 1:
+            horizontal_stutter()
+        else:
+            jump()
+
+def horizontal_stutter():
+    def go_left(timeout, timeout2):
+        debug("Pressing and releasing A")
+        press_key('a')
+        sleep(timeout2)
+        release_key('a')
+        sleep(timeout)
+
+    def go_right(timeout, timeout2):
+        debug("Pressing and releasing D")
+        press_key('d')
+        sleep(timeout2)
+        release_key('d')
+        sleep(timeout)
+
+    info(f'Strafing')
+    is_left = random.choice([1,2]) == 1
     timeout = random_timeout(dict['fishing']['timeouts']['afk'])
-    debug("Breaking AFK. Total time between movements: {} s".format(timeout))
-    sleep(timeout)
-    debug("Pressing and releasing A")
-    press_key('a')
-    release_key('a')
-    sleep(timeout)
-    debug("Pressing and releasing D")
-    press_key('d')
-    release_key('d')
-    sleep(timeout)
+    timeout2 = random_timeout(dict['fishing']['timeouts']['afk_strafe_return'])
+    if is_left:
+        go_left(timeout, timeout2)
+        go_right(timeout, timeout2)
+    else:
+        go_right(timeout, timeout2)
+        go_left(timeout, timeout2)
+        
+
+
+def jump():
+    timeout = random_timeout(dict['fishing']['timeouts']['afk'])
     debug("Pressing and releasing Space")
     press_key('Space')
     release_key('Space')
@@ -99,7 +127,7 @@ def open_close_inventory(timeout):
     sleep(timeout)
 
 def repair(timeout):
-    key_to_press = ("4", "F4")[gv.zannus_settings_enabled]
+    key_to_press = ("r", "F4")[gv.zannus_settings_enabled]
     sleep(timeout)
     press_key(key_to_press)
     sleep(0.1)

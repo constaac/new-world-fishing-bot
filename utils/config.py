@@ -36,6 +36,10 @@ dict = {
         "afk": {
           'min': config['fishing']['timeouts']['afk']['min'],
           'max': config['fishing']['timeouts']['afk']['max']
+        },
+        "afk_strafe_return": {
+          'min': config['fishing']['timeouts']['afk']['min'],
+          'max': config['fishing']['timeouts']['afk']['max']
         }
       }
     },
@@ -123,6 +127,10 @@ def save_data():
           'max': dict['fishing']['timeouts']['cast']['max']
         },
         'afk': {
+          'min': dict['fishing']['timeouts']['afk']['min'],
+          'max': dict['fishing']['timeouts']['afk']['max']
+        },
+        'afk_strafe_return': {
           'min': dict['fishing']['timeouts']['afk']['min'],
           'max': dict['fishing']['timeouts']['afk']['max']
         }
