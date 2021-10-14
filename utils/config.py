@@ -121,6 +121,10 @@ def save_data():
         'cast': {
           'min': dict['fishing']['timeouts']['cast']['min'],
           'max': dict['fishing']['timeouts']['cast']['max']
+        },
+        'afk': {
+          'min': dict['fishing']['timeouts']['afk']['min'],
+          'max': dict['fishing']['timeouts']['afk']['max']
         }
       }
     },

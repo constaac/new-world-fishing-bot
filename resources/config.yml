@@ -20,13 +20,13 @@ fishing:
       min: 0.5
       max: 1.0
     afk:
-      min: 1.0
-      max: 2.0
+      min: 0.6
+      max: 1.3
 repairing:
   x: 1180
   y: 850
   length: 25
-  every: 1500
+  every: 900
   enable: 1
   timeouts:
     arm_disarm:
@@ -71,4 +71,4 @@ colors:
 resolution:
   x: 5120
   y: 2160
-log_lvl: DEBUG
+log_lvl: INFO
