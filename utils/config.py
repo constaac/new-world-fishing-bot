@@ -258,8 +258,8 @@ def save_data():
         dump(d, yaml_file, sort_keys=False)
 
 def random_timeout(key):
-    upper_limit = float(key['max'])
-    lower_limit = float(key['min'])
+    upper_limit = key['max']
+    lower_limit = key['min']
 
     loc = (upper_limit + lower_limit) / 2
     scale = (upper_limit - lower_limit) / 4

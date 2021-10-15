@@ -157,11 +157,11 @@ VK_CODE = {'backspace':0x08,
            '`':0xC0}
 
 def press_key(key):
-    win32api.keybd_event(VK_CODE[key.lower()], 0,0,0)
+    win32api.keybd_event(VK_CODE[key.get().lower()], 0,0,0)
     sleep(.05)
 
 def release_key(key):
-    win32api.keybd_event(VK_CODE[key.lower()],0 ,win32con.KEYEVENTF_KEYUP ,0)
+    win32api.keybd_event(VK_CODE[key.get().lower()],0 ,win32con.KEYEVENTF_KEYUP ,0)
 
 def press_mouse_key():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)

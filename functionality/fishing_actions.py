@@ -25,13 +25,13 @@ def pause():
     sleep(pause_timeout)
 
 def cast():
-
-    cast_timeout = random_timeout(dict['fishing']['timeouts']['cast_shallow'].get())
-    if (dict['fishing']['cast_strength'] == 1):
+    cast_strength = dict['fishing']['cast_strength'].get()
+    cast_timeout = random_timeout(dict['fishing']['timeouts']['cast_shallow'])
+    if (cast_strength == 1):
         cast_timeout = random_timeout(dict['fishing']['timeouts']['cast_min'])
-    elif (dict['fishing']['cast_strength'] == 2):
+    elif (cast_strength == 2):
         cast_timeout = random_timeout(dict['fishing']['timeouts']['cast_shallow'])
-    elif (dict['fishing']['cast_strength'] == 3):
+    elif (cast_strength == 3):
         cast_timeout = random_timeout(dict['fishing']['timeouts']['cast_deep'])
     else:
         cast_timeout = random_timeout(dict['fishing']['timeouts']['cast_max'])
@@ -39,7 +39,7 @@ def cast():
     key_to_press = dict['keybinds']['free_look']
     debug("Pause for: 6 s")
     sleep(6)
-    debug("release " + key_to_press)
+    debug("release {}".format(key_to_press))
     release_key(key_to_press)
     debug("Pause for: 1 s")
     sleep(1)
