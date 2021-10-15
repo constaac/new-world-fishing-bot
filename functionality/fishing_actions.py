@@ -80,51 +80,13 @@ def repairing():
 
 def breaking_afk():
     release_key(dict['keybinds']['free_look'])
-    horizontal_stutter()
     for _ in range(1, random.choice(range(3,7))):
-        if random.choice([1,2]) == 1:
-            horizontal_stutter()
-        else:
-            jump()
-
-def horizontal_stutter():
-    def go_left(timeout, timeout2):
-        key_to_press = dict['keybinds']['strafe_left']
+        timeout = random_timeout(dict['fishing']['timeouts']['afk'])
+        key_to_press = dict['keybinds']['jump']
         debug("Pressing and releasing {}".format(key_to_press))
         press_key(key_to_press)
-        sleep(timeout2)
         release_key(key_to_press)
-        sleep(timeout)
-
-    def go_right(timeout, timeout2):
-        key_to_press = dict['keybinds']['strafe_right']
-        debug("Pressing and releasing {}".format(key_to_press))
-        press_key(key_to_press)
-        sleep(timeout2)
-        release_key(key_to_press)
-        sleep(timeout)
-
-    is_left = random.choice([1,2]) == 1
-    info("Strafing {}".format("Right", "Left")[is_left])
-    timeout = random_timeout(dict['fishing']['timeouts']['afk'])
-    timeout2 = random_timeout(dict['fishing']['timeouts']['afk_strafe_return'])
-    if is_left:
-        go_left(timeout, timeout2)
-        go_right(timeout, timeout2)
-    else:
-        go_right(timeout, timeout2)
-        go_left(timeout, timeout2)
-        
-
-
-def jump():
-    timeout = random_timeout(dict['fishing']['timeouts']['afk'])
-    key_to_press = dict['keybinds']['jump']
-    debug("Pressing and releasing {}".format(key_to_press))
-    press_key(key_to_press)
-    release_key(key_to_press)
-    sleep(timeout)
-    
+        sleep(timeout)    
 
 def arm_disarm_fishing_rod(timeout):
     key_to_press = dict['keybinds']['arm_disarm_fishing_rod']
