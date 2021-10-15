@@ -220,16 +220,16 @@ def save_data():
       }
     },
     'keybinds':{
-      'forward': config['keybinds']['forward'],
-      'backward': config['keybinds']['backward'],
-      'strafe_left': config['keybinds']['strafe_left'],
-      'strafe_right': config['keybinds']['strafe_right'],
-      'free_look': config['keybinds']['free_look'],
-      'jump': config['keybinds']['jump'],
-      'interact': config['keybinds']['interact'],
-      'arm_disarm_fishing_rod': config['keybinds']['arm_disarm_fishing_rod'],
-      'open_inventory': config['keybinds']['open_inventory'],
-      'bait': config['keybinds']['bait']
+      'forward': dict['keybinds']['forward'].get(),
+      'backward': dict['keybinds']['backward'].get(),
+      'strafe_left': dict['keybinds']['strafe_left'].get(),
+      'strafe_right': dict['keybinds']['strafe_right'].get(),
+      'free_look': dict['keybinds']['free_look'].get(),
+      'jump': dict['keybinds']['jump'].get(),
+      'interact': dict['keybinds']['interact'].get(),
+      'arm_disarm_fishing_rod': dict['keybinds']['arm_disarm_fishing_rod'].get(),
+      'open_inventory': dict['keybinds']['open_inventory'].get(),
+      'bait': dict['keybinds']['bait'].get()
     },
     'colors':{
       'green': {
