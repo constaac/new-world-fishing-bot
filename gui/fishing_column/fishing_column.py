@@ -1,5 +1,6 @@
 from gui.fishing_column.components.attributes import *
 from gui.fishing_column.components.position import *
+from gui.fishing_column.components.cast_strength import *
 from gui.fishing_column.components.show_button import *
 import utils.global_variables as gv
 from tkinter import Label, LabelFrame
@@ -13,3 +14,4 @@ def fishing_column():
     fishing_column_position(fishing_column)
     fishing_column_attributes(fishing_column)
     fishing_column_show_button(fishing_column)
+    fishing_column_cast_strength(fishing_column)

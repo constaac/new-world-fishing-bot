@@ -1,5 +1,5 @@
 from yaml import safe_load, dump
-from tkinter import IntVar, StringVar
+from tkinter import IntVar, StringVar, DoubleVar
 from utils.global_variables import CONFIG_PATH
 from numpy import random
 
@@ -12,6 +12,7 @@ dict = {
       'y': IntVar(value=config['fishing']['y']),
       'width': IntVar(value=config['fishing']['width']),
       'height': IntVar(value=config['fishing']['height']),
+      'cast_strength': IntVar(value=config['fishing']['cast_strength']),
       'timeouts':{
         'loop': {
           'min': config['fishing']['timeouts']['loop']['min'],
@@ -29,9 +30,21 @@ dict = {
           'min': config['fishing']['timeouts']['pause']['min'],
           'max': config['fishing']['timeouts']['pause']['max']
         },
-        'cast': {
-          'min': config['fishing']['timeouts']['cast']['min'],
-          'max': config['fishing']['timeouts']['cast']['max']
+        'cast_min': {
+          'min': config['fishing']['timeouts']['cast_min']['min'],
+          'max': config['fishing']['timeouts']['cast_min']['max']
+        },
+        'cast_shallow': {
+          'min': config['fishing']['timeouts']['cast_shallow']['min'],
+          'max': config['fishing']['timeouts']['cast_shallow']['max']
+        },
+        'cast_deep': {
+          'min': config['fishing']['timeouts']['cast_deep']['min'],
+          'max': config['fishing']['timeouts']['cast_deep']['max']
+        },
+        'cast_max': {
+          'min': config['fishing']['timeouts']['cast_max']['min'],
+          'max': config['fishing']['timeouts']['cast_max']['max']
         },
         "afk": {
           'min': config['fishing']['timeouts']['afk']['min'],
@@ -118,6 +131,7 @@ def save_data():
       'y': dict['fishing']['y'].get(),
       'width': dict['fishing']['width'].get(),
       'height': dict['fishing']['height'].get(),
+      'cast_strength': dict['fishing']['cast_strength'].get(),
       'timeouts':{
         'loop': {
           'min': dict['fishing']['timeouts']['loop']['min'],
@@ -135,9 +149,21 @@ def save_data():
           'min': dict['fishing']['timeouts']['pause']['min'],
           'max': dict['fishing']['timeouts']['pause']['max']
         },
-        'cast': {
-          'min': dict['fishing']['timeouts']['cast']['min'],
-          'max': dict['fishing']['timeouts']['cast']['max']
+        'cast_min': {
+          'min': dict['fishing']['timeouts']['cast_min']['min'],
+          'max': dict['fishing']['timeouts']['cast_min']['max']
+        },
+        'cast_shallow': {
+          'min': dict['fishing']['timeouts']['cast_max']['min'],
+          'max': dict['fishing']['timeouts']['cast_max']['max']
+        },
+        'cast_deep': {
+          'min': dict['fishing']['timeouts']['cast_deep']['min'],
+          'max': dict['fishing']['timeouts']['cast_deep']['max']
+        },
+        'cast_max': {
+          'min': dict['fishing']['timeouts']['cast_max']['min'],
+          'max': dict['fishing']['timeouts']['cast_max']['max']
         },
         'afk': {
           'min': dict['fishing']['timeouts']['afk']['min'],
@@ -194,16 +220,16 @@ def save_data():
       }
     },
     'keybinds':{
-      'forward': config['keybinds']['forward'].get(),
-      'backward': config['keybinds']['backward'].get(),
-      'strafe_left': config['keybinds']['strafe_left'].get(),
-      'strafe_right': config['keybinds']['strafe_right'].get(),
-      'free_look': config['keybinds']['free_look'].get(),
-      'jump': config['keybinds']['jump'].get(),
-      'interact': config['keybinds']['interact'].get(),
-      'arm_disarm_fishing_rod': config['keybinds']['arm_disarm_fishing_rod'].get(),
-      'open_inventory': config['keybinds']['open_inventory'].get(),
-      'bait': config['keybinds']['bait'].get()
+      'forward': config['keybinds']['forward'],
+      'backward': config['keybinds']['backward'],
+      'strafe_left': config['keybinds']['strafe_left'],
+      'strafe_right': config['keybinds']['strafe_right'],
+      'free_look': config['keybinds']['free_look'],
+      'jump': config['keybinds']['jump'],
+      'interact': config['keybinds']['interact'],
+      'arm_disarm_fishing_rod': config['keybinds']['arm_disarm_fishing_rod'],
+      'open_inventory': config['keybinds']['open_inventory'],
+      'bait': config['keybinds']['bait']
     },
     'colors':{
       'green': {
@@ -232,8 +258,8 @@ def save_data():
         dump(d, yaml_file, sort_keys=False)
 
 def random_timeout(key):
-    upper_limit = key['max']
-    lower_limit = key['min']
+    upper_limit = float(key['max'])
+    lower_limit = float(key['min'])
 
     loc = (upper_limit + lower_limit) / 2
     scale = (upper_limit - lower_limit) / 4
