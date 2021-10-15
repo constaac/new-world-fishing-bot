@@ -86,6 +86,18 @@ dict = {
         }
       }
     },
+    'keybinds':{
+      'forward': config['keybinds']['forward'],
+      'backward': config['keybinds']['backward'],
+      'strafe_left': config['keybinds']['strafe_left'],
+      'strafe_right': config['keybinds']['strafe_right'],
+      'free_look': config['keybinds']['free_look'],
+      'jump': config['keybinds']['jump'],
+      'interact': config['keybinds']['interact'],
+      'arm_disarm_fishing_rod': config['keybinds']['arm_disarm_fishing_rod'],
+      'open_inventory': config['keybinds']['open_inventory'],
+      'bait': config['keybinds']['bait']
+    },
     'colors':{
       'green': (config['colors']['green']['r'], config['colors']['green']['g'], config['colors']['green']['b']),
       'brown': (config['colors']['brown']['r'], config['colors']['brown']['g'], config['colors']['brown']['b']),
@@ -178,6 +190,18 @@ def save_data():
           'max': dict['bait']['timeouts']['confirm']['max']
         }
       }
+    },
+    'keybinds':{
+      'forward': config['keybinds']['forward'].get(),
+      'backward': config['keybinds']['backward'].get(),
+      'strafe_left': config['keybinds']['strafe_left'].get(),
+      'strafe_right': config['keybinds']['strafe_right'].get(),
+      'free_look': config['keybinds']['free_look'].get(),
+      'jump': config['keybinds']['jump'].get(),
+      'interact': config['keybinds']['interact'].get(),
+      'arm_disarm_fishing_rod': config['keybinds']['arm_disarm_fishing_rod'].get(),
+      'open_inventory': config['keybinds']['open_inventory'].get(),
+      'bait': config['keybinds']['bait'].get()
     },
     'colors':{
       'green': {
