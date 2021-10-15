@@ -19,8 +19,9 @@ def fishing_loop():
                 gv.last_repair_time = int(time())
                 info("Repairing")
                 repairing()
-                info("Breaking AFK")
-                breaking_afk()
+                if (dict['repairing']['enable_afk_break'].get() == 1):
+                    info("Breaking AFK")
+                    breaking_afk()
                 if dict['bait']['enable'].get():
                     info("Selecting bait")
                     select_bait()

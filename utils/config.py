@@ -49,6 +49,7 @@ dict = {
       'length': IntVar(value=config['repairing']['length']),
       'every': IntVar(value=config['repairing']['every']),
       'enable': IntVar(value=config['repairing']['enable']),
+      'enable_afk_break': IntVar(value=config['repairing']['enable_afk_break']),
       'timeouts': {
         'arm_disarm': {
           'min': config['repairing']['timeouts']['arm_disarm']['min'],
@@ -154,6 +155,7 @@ def save_data():
       'length': dict['repairing']['length'].get(),
       'every': dict['repairing']['every'].get(),
       'enable': dict['repairing']['enable'].get(),
+      'enable_afk_break': dict['repairing']['enable_afk_break'].get(),
       'timeouts': {
         'arm_disarm': {
           'min': dict['repairing']['timeouts']['arm_disarm']['min'],

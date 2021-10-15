@@ -1,4 +1,5 @@
-from gui.repairing_column.components.enable import *
+from gui.repairing_column.components.enable_repair import *
+from gui.repairing_column.components.enable_afk_break import *
 from gui.repairing_column.components.every import *
 from gui.repairing_column.components.position import *
 from gui.repairing_column.components.show_button import *
@@ -15,5 +16,6 @@ def repairing_column():
 
     repairing_column_position(repairing_column)
     repairing_column_every(repairing_column)
-    repairing_column_enable(repairing_column)
+    repairing_column_enable_repair(repairing_column)
+    repairing_column_enable_afk_break(repairing_column)
     repairing_column_show(repairing_column)
