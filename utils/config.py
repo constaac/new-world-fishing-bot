@@ -1,5 +1,5 @@
 from yaml import safe_load, dump
-from tkinter import IntVar
+from tkinter import IntVar, StringVar
 from utils.global_variables import CONFIG_PATH
 from numpy import random
 
@@ -87,16 +87,16 @@ dict = {
       }
     },
     'keybinds':{
-      'forward': config['keybinds']['forward'],
-      'backward': config['keybinds']['backward'],
-      'strafe_left': config['keybinds']['strafe_left'],
-      'strafe_right': config['keybinds']['strafe_right'],
-      'free_look': config['keybinds']['free_look'],
-      'jump': config['keybinds']['jump'],
-      'interact': config['keybinds']['interact'],
-      'arm_disarm_fishing_rod': config['keybinds']['arm_disarm_fishing_rod'],
-      'open_inventory': config['keybinds']['open_inventory'],
-      'bait': config['keybinds']['bait']
+      'forward': StringVar(value=config['keybinds']['forward']),
+      'backward': StringVar(value=config['keybinds']['backward']),
+      'strafe_left': StringVar(value=config['keybinds']['strafe_left']),
+      'strafe_right': StringVar(value=config['keybinds']['strafe_right']),
+      'free_look': StringVar(value=config['keybinds']['free_look']),
+      'jump': StringVar(value=config['keybinds']['jump']),
+      'interact': StringVar(value=config['keybinds']['interact']),
+      'arm_disarm_fishing_rod': StringVar(value=config['keybinds']['arm_disarm_fishing_rod']),
+      'open_inventory': StringVar(value=config['keybinds']['open_inventory']),
+      'bait': StringVar(value=config['keybinds']['bait'])
     },
     'colors':{
       'green': (config['colors']['green']['r'], config['colors']['green']['g'], config['colors']['green']['b']),
