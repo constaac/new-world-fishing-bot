@@ -26,7 +26,7 @@ def pause():
 
 def cast():
     cast_timeout = random_timeout(dict['fishing']['timeouts']['cast'])
-    key_to_press = ("b", "0")[gv.zannus_settings_enabled]
+    key_to_press = dict['keybinds']['free_look']
     debug("Pause for: 6 s")
     sleep(6)
     debug("release " + key_to_press)
@@ -43,7 +43,7 @@ def cast():
     press_key(key_to_press)
 
 def repairing():
-    key_to_press = ("b", "0")[gv.zannus_settings_enabled]
+    key_to_press = dict['keybinds']['free_look']
     release_key(key_to_press)
     arm_disarm_timeout = random_timeout(dict['repairing']['timeouts']['arm_disarm'])
     debug("Disarm fishing rod. Total time: {} s".format(arm_disarm_timeout))
@@ -69,8 +69,7 @@ def repairing():
 
 
 def breaking_afk():
-    key_to_press = ("b", "0")[gv.zannus_settings_enabled]
-    release_key(key_to_press)
+    release_key(dict['keybinds']['free_look'])
     horizontal_stutter()
     for _ in range(1, random.choice(range(3,7))):
         if random.choice([1,2]) == 1:
@@ -80,21 +79,23 @@ def breaking_afk():
 
 def horizontal_stutter():
     def go_left(timeout, timeout2):
-        debug("Pressing and releasing A")
-        press_key('a')
+        key_to_press = dict['keybinds']['strafe_left']
+        debug("Pressing and releasing {}".format(key_to_press))
+        press_key(key_to_press)
         sleep(timeout2)
-        release_key('a')
+        release_key(key_to_press)
         sleep(timeout)
 
     def go_right(timeout, timeout2):
-        debug("Pressing and releasing D")
-        press_key('d')
+        key_to_press = dict['keybinds']['strafe_right']
+        debug("Pressing and releasing {}".format(key_to_press))
+        press_key(key_to_press)
         sleep(timeout2)
-        release_key('d')
+        release_key(key_to_press)
         sleep(timeout)
 
-    info(f'Strafing')
     is_left = random.choice([1,2]) == 1
+    info("Strafing {}".format("Right", "Left")[is_left])
     timeout = random_timeout(dict['fishing']['timeouts']['afk'])
     timeout2 = random_timeout(dict['fishing']['timeouts']['afk_strafe_return'])
     if is_left:
@@ -108,26 +109,29 @@ def horizontal_stutter():
 
 def jump():
     timeout = random_timeout(dict['fishing']['timeouts']['afk'])
-    debug("Pressing and releasing Space")
-    press_key('Space')
-    release_key('Space')
+    key_to_press = dict['keybinds']['jump']
+    debug("Pressing and releasing {}".format(key_to_press))
+    press_key(key_to_press)
+    release_key(key_to_press)
     sleep(timeout)
     
 
 def arm_disarm_fishing_rod(timeout):
+    key_to_press = dict['keybinds']['arm_disarm_fishing_rod']
     sleep(timeout)
-    press_key('F3')
-    release_key('F3')
+    press_key(key_to_press)
+    release_key(key_to_press)
     sleep(timeout)
 
 def open_close_inventory(timeout):
+    key_to_press = dict['keybinds']['open_inventory']
     sleep(timeout)
-    press_key('tab')
-    release_key('tab')
+    press_key(key_to_press)
+    release_key(key_to_press)
     sleep(timeout)
 
 def repair(timeout):
-    key_to_press = ("r", "F4")[gv.zannus_settings_enabled]
+    key_to_press = dict['keybinds']['bait']
     sleep(timeout)
     press_key(key_to_press)
     sleep(0.1)
@@ -137,7 +141,7 @@ def repair(timeout):
     sleep(timeout)
 
 def confirm_repair(timeout):
-    key_to_press = ("e", "r")[gv.zannus_settings_enabled]
+    key_to_press = dict['keybinds']['interact']
     sleep(timeout)
     press_key(key_to_press)
     sleep(0.1)
@@ -145,9 +149,9 @@ def confirm_repair(timeout):
     sleep(timeout)
 
 def select_bait():
-    release_key(("b", "0")[gv.zannus_settings_enabled])
+    release_key(dict['keybinds']['free_look'])
 
-    key_to_press = ("r", "F4")[gv.zannus_settings_enabled]
+    key_to_press = dict['keybinds']['bait']
     debug("Bait selection.")
     press_key(key_to_press)
     sleep(0.1)
