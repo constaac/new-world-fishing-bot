@@ -18,5 +18,6 @@ ICON_PATH = path.join(ROOT_DIR, 'resources\\icon.ico')
 
 continue_fishing = False
 last_repair_time = int(time())
+last_afk_break_time = int(time())
 last_results = LastResults()
 root = Tk()

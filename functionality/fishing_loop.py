@@ -19,9 +19,13 @@ def fishing_loop():
                 gv.last_repair_time = int(time())
                 info("Repairing")
                 repairing()
+                if (dict['repairing']['enable_afk_break'].get() == 1):
+                    info("Breaking AFK")
+                    breaking_afk()
                 if dict['bait']['enable'].get():
                     info("Selecting bait")
                     select_bait()
+        
     if (gv.continue_fishing):
         gv.root.after(int(random_timeout(dict['fishing']['timeouts']['loop'])*1000), fishing_loop)
 

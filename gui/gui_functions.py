@@ -33,6 +33,16 @@ def change_repair_button_state(button):
         button.configure(bg="green")
         dict['repairing']['enable'] = IntVar(value=1)
 
+def change_afk_break_button_state(button):
+    if (dict['repairing']['enable_afk_break'].get() == 1):
+        button.configure(text="OFF")
+        button.configure(bg="red")
+        dict['repairing']['enable_afk_break'] = IntVar(value=0)
+    else:
+        button.configure(text="ON ")
+        button.configure(bg="green")
+        dict['repairing']['enable_afk_break'] = IntVar(value=1)
+
 def change_bait_button_state(button):
     if (dict['bait']['enable'].get() == 1):
         button.configure(text="OFF")
@@ -55,5 +65,8 @@ def changeFishingState(button):
 def start_fishing(button):
     changeFishingState(button)
     fishing_loop()
+
+def save():
+    save_data()
 
 
